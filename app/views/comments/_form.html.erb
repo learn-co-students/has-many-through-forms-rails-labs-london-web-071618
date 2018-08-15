@@ -1,0 +1,14 @@
+<h3>New Comment </h3>
+<%= form_for @comment do |f| %>
+<%= f.hidden_field :post_id %>
+<%= f.label :username %>
+<%= f.text_field :username, id: 'user', list: "users_autocomplete" %>
+<datalist id="users_autocomplete">
+  <% User.all.each do |user| %>
+    <option value="<%= user.username %>">
+  <% end %>
+</datalist><br>
+<br />
+<%= f.text_area :content, id: 'comment_content' %><br><br>
+<%= f.submit %>
+<% end %>
